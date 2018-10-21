@@ -1,0 +1,49 @@
+/* components/search-bar/index.wxss */
+.search-bar-view {
+  background: #f2f2f2;
+  padding: 10rpx 20rpx;
+  display: flex;
+}
+
+.search-bar-view text.clear {
+  color:#2b579a;
+  font-size:35rpx;
+  padding: 20rpx;
+}
+
+
+
+.search-bar-view button:active{
+ background-color: #3fbaf3;
+}
+
+.search-bar-view  button{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  background-color: #17AFF8;
+  margin-left: 20rpx;
+  color: #fff;
+}
+
+.search-bar {
+  flex: 1;
+  height: 80rpx;
+  border: 1px solid #ddd;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+.search-bar image {
+  width: 50rpx;
+  height: 50rpx;
+  padding: 20rpx;
+}
+
+.search-bar input {
+  flex: 1;
+}

@@ -1,0 +1,51 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/detail/index",
+    "pages/index/search/index",
+    "pages/find/index",
+    "pages/find/topic/index",
+    "pages/mine/index",
+    "pages/mine/collection/index",
+    "pages/mine/exam/index"
+  ],
+  "window":{
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#17AFF8",
+    "navigationBarTitleText": "陆向谦推荐",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": 0
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/news-default.png",
+        "selectedIconPath": "assets/icons/news-active.png"
+      },
+      {
+        "pagePath": "pages/find/index",
+        "text": "发现",
+        "iconPath": "assets/icons/find-default.png",
+        "selectedIconPath": "assets/icons/find-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "assets/icons/user-default.png",
+        "selectedIconPath": "assets/icons/user-active.png"
+      }
+    ],
+    "color": "#666666",
+    "selectedColor": "#17aff8",
+    "borderStyle": "#f0f0f0",
+    "debug": true,
+    "plugins": {
+      "tencentvideo": {
+        "version": "1.1.8",
+        "provider": "wxa75efa648b60994b"
+      }
+    }
+  }
+}

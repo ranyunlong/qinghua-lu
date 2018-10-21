@@ -1,0 +1,4 @@
+<!--components/panel/index.wxml-->
+<view class='panel'>
+  <text style="font-weight: {{bold ? 'bold' : 'normal'}}">{{title}}</text>
+</view>

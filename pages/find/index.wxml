@@ -1,0 +1,7 @@
+<!--pages/find/index.wxml-->
+<topic-list 
+    data="{{topics}}"  
+    bindtoptic="openTopicPage" 
+    bindfollow="onTapFollow" 
+    bindselect="openDetailPage"  />
+

@@ -1,0 +1,5 @@
+/* pages/index/index.wxss */
+.news-list {
+  margin-top: 100rpx;
+  border-top: 20rpx solid #e9e9e9;
+}

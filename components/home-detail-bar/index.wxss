@@ -1,0 +1,15 @@
+:host{
+  display: block;
+}
+
+.home-detail-bar {
+  height: 40px;
+  background: #fff;
+  border-top: 1rpx solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size:26rpx;
+  color:#3c3c3c;
+}
+

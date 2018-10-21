@@ -1,0 +1,12 @@
+.home-detail-bar-item {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-detail-bar-item image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}

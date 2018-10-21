@@ -1,0 +1,14 @@
+/* components/home-navigator/item.wxss */
+
+.home-navigator-item {
+  display: block;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin: 0 30rpx; 
+  font-size: 32rpx;
+}
+
+.home-navigator-item.active{
+  border-bottom: 8rpx solid #17AFF8;
+  box-sizing: border-box;
+}

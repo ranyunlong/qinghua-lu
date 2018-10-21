@@ -1,0 +1,53 @@
+/* components/topic-list/item.wxss */
+.topic-list-item {
+  display: flex;
+  width: inherit;
+  flex-direction: column;
+  border-bottom: 1rpx solid #e9e9e9;
+  padding: 20rpx;
+}
+
+.topic-list-item .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topic-list-item .header button{
+  margin: 1rpx;
+  background: #17aff8;
+  padding: 0 30rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  color: #fff;
+}
+
+.topic-list-item .header button:active {
+  background: #4fc0f5;
+}
+
+.topic-list-item .header text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fef5e8;
+  padding: 0 20rpx;
+  border-radius: 8rpx;
+  font-size: 36rpx;
+  color: #f5a623;
+}
+
+.topic-list-item .content {
+  padding: 20rpx 0;
+  font-size: 34rpx;
+}
+
+.topic-list-item .footer {
+  font-size: 26rpx;
+  color: #666;
+  height: 37rpx;
+  line-height: 37rpx;
+}
+
+.topic-list-item .footer text {
+  margin-right: 40rpx;
+}

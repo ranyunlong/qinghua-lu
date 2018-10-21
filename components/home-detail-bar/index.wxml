@@ -1,0 +1,3 @@
+<view class='home-detail-bar'>
+  <item data="{{item}}" bindselect="onTap" wx:for="{{data}}" index="{{index}}" wx:key="index" />
+</view>

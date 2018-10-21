@@ -1,0 +1,4 @@
+<!--components/cell-group/index.wxml-->
+<view class='cell-group'>
+  <cell bindselect="onSelect" wx:for="{{data}}" icon="{{item.icon}}" title="{{item.title}}" arrow="{{item.arrow}}" wx:key="index" />
+</view>

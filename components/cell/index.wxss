@@ -1,0 +1,28 @@
+/* components/cell/index.wxss */
+
+.cell {
+  height: 80rpx;
+  border-bottom: solid #e7e7e7 1rpx;
+  background-color: white;
+  width: inherit;
+  display: flex;
+  align-items: center;
+  padding: 4rpx 25rpx;
+  font-size: 34rpx;
+  color: #3c3c3c;
+}
+
+.cell .icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 30rpx;
+}
+
+.cell .title {
+  flex: 1;
+}
+
+.cell .arrow {
+  width: 15rpx;
+  height: 25rpx;
+}

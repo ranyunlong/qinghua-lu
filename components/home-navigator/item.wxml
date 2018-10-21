@@ -1,0 +1,4 @@
+<!--components/home-navigator/item.wxml-->
+<text
+    class="home-navigator-item {{active ? 'active': ''}}"
+    bindtap='onTap'>{{item.name}}</text>

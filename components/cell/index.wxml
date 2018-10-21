@@ -1,0 +1,6 @@
+<!--components/cell/index.wxml-->
+<view class='cell' bindtap='onTap'>
+  <image class='icon' src='{{icon}}' wx:if="{{icon}}"></image>
+  <text class='title'>{{title ? title : '标题'}}</text>
+  <image class='arrow' wx:if="{{arrow}}" src='../../assets/icons/arrow-right.png'></image>
+</view> 

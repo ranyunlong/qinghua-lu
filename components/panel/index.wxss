@@ -1,0 +1,20 @@
+/* components/panel/index.wxss */
+
+:host{
+  display: block;
+}
+
+.panel::before {
+  content: "";
+  display: block;
+  width: 10rpx;
+  height: 50rpx;
+  background-color: #17aff8;
+  margin-right: 30rpx;
+  border-radius: 5rpx;
+}
+
+.panel {
+  display: flex;
+  padding: 20rpx 0;
+}

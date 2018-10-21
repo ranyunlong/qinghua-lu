@@ -1,0 +1,44 @@
+/* components/user-select-bar/index.wxss */
+
+.user-select-bar {
+  background: #fff;
+  padding: 0 20rpx;
+  height: auto;
+}
+
+.bar {
+  position: relative;
+  top: -80rpx;
+  border: 1px solid #ddd;
+  border-radius: 10rpx;
+  background: #fff;
+  padding: 0 40rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar .top {
+  height: 120rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bar .item {
+  display:  flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar .line{
+  width: 3rpx;
+  height: 50rpx;
+  background: #ccc;
+}
+
+.bar .item .number {
+  font-weight: bold;
+  font-size: 32rpx;
+}

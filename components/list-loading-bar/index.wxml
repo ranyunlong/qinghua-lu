@@ -1,0 +1,5 @@
+<!--components/list-loading-bar/index.wxml-->
+<view class='loading' wx:if="{{show}}">
+  <text>正在加载\n</text>
+  <image mode='aspectFill' src='/assets/icons/loading.gif' />
+</view>

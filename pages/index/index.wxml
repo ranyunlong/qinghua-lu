@@ -1,0 +1,9 @@
+<home-navigator bindsearchtap="openSearchPage" data="{{columns}}" bindchange="navigatorChange" />
+<view class='news-list'>
+  <home-news-list
+    bindselect="openDetailPage"
+    data="{{contents[cid]}}"
+    feedback
+    bindfeedback="onFeedBack"
+    loading="{{contentsLoading}}" />
+</view>

@@ -1,0 +1,5 @@
+/* components/cell-group/index.wxss */
+
+.cell-group {
+  margin-bottom: 20rpx;
+}

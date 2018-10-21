@@ -1,0 +1,7 @@
+<!--pages/mine/collection/index.wxml-->
+<view class='mine-collection'>
+  <view class='none'>
+    <image src='/assets/icons/nocollect.png'></image>
+    <text>暂无收藏内容</text>
+  </view>
+</view>

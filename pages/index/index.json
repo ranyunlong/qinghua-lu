@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "home-navigator": "/components/home-navigator/index",
+    "home-news-list": "/components/home-news-list/index"
+  }
+}

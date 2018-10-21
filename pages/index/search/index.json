@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "search-bar": "/components/search-bar/index",
+    "search-list": "/components/home-news-list/index",
+    "cell-group": "/components/cell-group/index"
+  }
+}

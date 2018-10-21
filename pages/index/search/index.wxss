@@ -1,0 +1,45 @@
+/* pages/search/index.wxss */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.header .panel {
+  background: #fff;
+  font-size: 30rpx;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.content {
+  padding-top: 180rpx;
+}
+
+.content .list .none {
+  display: block;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  text-align: center;
+  color: #3c3c3c;
+}
+
+.content .history .cls {
+  display: block;
+  font-size: 30rpx;
+  text-align: center;
+  color:#2b579a;
+}
+.content .history .his {
+  display: block;
+  font-size: 30rpx;
+  text-align: center;
+}

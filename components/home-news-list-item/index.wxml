@@ -1,0 +1,14 @@
+<view class='item'>
+  <view class='content' bindtap='ontap'>
+    <view class='info'>
+      <text class='description'>{{data.title}}</text>
+    </view>
+    <view class='cover-image' wx:if="{{data.images[0]}}">
+      <image lazy-load mode="aspectFill" src='{{data.images[0]}}'></image>
+    </view>
+  </view>
+  <view class='footer'>
+    <text class='category'>{{data.source_name}}</text>
+    <image wx:if="{{feedback}}" bindtap='onFeedBack' src='/assets/icons/arrow-down.png'></image>
+  </view>
+</view>

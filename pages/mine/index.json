@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "cell-group": "/components/cell-group/index",
+    "user-select-bar": "/components/user-select-bar/index"
+  }
+}

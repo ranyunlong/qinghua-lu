@@ -1,0 +1,23 @@
+<!--pages/mine/index.wxml-->
+
+<view class='page'>
+  <view class='info'>
+    <view class='login-box' wx:if="{{!userInfo}}">
+      <button open-type="getUserInfo" bindgetuserinfo='setUserInfo'>登录</button>
+    </view>
+    <view class='info-box' wx:if="{{userInfo}}">
+      <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+      <text class='nickName'>{{userInfo.nickName}}</text>
+      <view class='progress'>
+        <progress percent="{{percent}}" stroke-width="3" color="#3c3c3c" active></progress>
+        <text>兴趣领域完成度 {{percent}}%</text>
+      </view>
+    </view>
+  </view>
+  <user-select-bar></user-select-bar>
+  <view class='list-group'>
+    <cell-group bindselect="onSelect" data="{{cellGroups1}}"></cell-group>
+    <cell-group bindselect="onSelect" data="{{cellGroups2}}"></cell-group>
+  </view>
+</view>
+

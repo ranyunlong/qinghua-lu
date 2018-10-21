@@ -1,0 +1,22 @@
+/* pages/mine/collection/index.wxss */
+.mine-collection {
+
+}
+.mine-collection .none {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 750rpx;
+}
+
+.mine-collection .none image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.mine-collection .none text {
+  padding: 40rpx;
+  font-size: 36rpx;
+  color: #666;
+}

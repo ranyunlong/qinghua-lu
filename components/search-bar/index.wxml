@@ -1,0 +1,10 @@
+<!--components/search-bar/index.wxml-->
+<view class='search-bar-view'>
+  <view class='search-bar'>
+    <image src='../../assets/icons/search_icon.png'></image>
+    <input bindconfirm="onConfirm" confirm-type="search" bindinput='onInput' placeholder-style='placeholderStyle' placeholder-class='{{placeholderClass}}' value='{{value}}' placeholder="{{placeholder}}"></input>
+  </view>
+  <text class='clear' wx:if="{{showClear}}" bindtap='onClear'>清空</text>
+  <button wx:if="{{button}}" bindtap='onTap' size='mini'>{{button}}</button>
+</view>
+

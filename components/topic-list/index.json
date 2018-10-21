@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "toptic-list-item": "./item",
+    "panel": "../panel/index",
+    "loading-bar": "../list-loading-bar/index"
+  }
+}

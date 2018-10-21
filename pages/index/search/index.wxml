@@ -1,0 +1,24 @@
+<!--pages/search/index.wxml-->
+<view class='header'>
+  <search-bar  
+    value="{{search}}" 
+    bindconfirm="onInput" 
+    bindclear="onClear"
+    placeholder="搜索一下"
+    show-clear />
+  <view class='panel'>
+    <text wx:if="{{searchList}}">资讯详情</text>
+    <text wx:else>搜索历史</text>
+  </view>
+</view>
+<view class='content'>
+  <view class='list' wx:if="{{searchList}}">
+    <text class='none' wx:if="{{searchList.length === 0}}" >暂无相关搜索</text>
+    <search-list bindselect="openDetailPage" loading="{{loading}}" class="list" data="{{searchList}}" />
+  </view>
+  <view class='history'wx:else>
+    <cell-group bindselect="setSearch" data="{{history}}"/>
+    <text class='cls' bindtap='clearHistory' wx:if="{{history.length > 0}}">清空搜索历史</text>
+    <text class='his' wx:if="{{history.length === 0}}">暂无历史</text>
+  </view>
+</view>

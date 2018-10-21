@@ -1,0 +1,12 @@
+<!--components/home-news-list/index.wxml-->
+<scroll-view>
+  <home-news-list-item 
+    bindselect="select"
+    bindfeedback="onFeedBack"
+    wx:for="{{data}}" 
+    data="{{item}}"
+    index="{{index}}"
+    feedback="{{feedback}}"
+    wx:key="item.iid" />
+  <list-loading-bar show="{{loading}}" />
+</scroll-view>

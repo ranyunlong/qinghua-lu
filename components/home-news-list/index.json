@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "home-news-list-item": "../home-news-list-item/index",
+    "list-loading-bar": "../list-loading-bar/index"
+  }
+}

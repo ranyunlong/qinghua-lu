@@ -1,0 +1,11 @@
+<!--components/home-navigator/index.wxml-->
+<view class='home-navigator'>
+  <view class='icon' bindtap='onSearch'>
+    <image src='/assets/icons/home-search.png'></image>
+  </view>
+  <scroll-view scroll-x>
+    <view class='list'>
+      <item bindselect="onSelect" wx:for="{{data}}" index="{{index}}" active="{{index === activeIndex}}" item="{{item}}" wx:key="item.id"/> 
+    </view>
+  </scroll-view>
+</view>

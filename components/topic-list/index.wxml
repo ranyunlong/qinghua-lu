@@ -1,0 +1,13 @@
+<!--components/find-list/index.wxml-->
+<view class='topic-list'>
+  <panel title="热点话题推荐" bold />
+  <toptic-list-item 
+    bindtoptic="onTapToptic" 
+    bindfollow="onTapFollow" 
+    bindselect="onTapSelect" 
+    wx:for="{{data}}" 
+    index="{{index}}" 
+    data="{{item}}" 
+    wx:key="item.mid" />
+    <loading-bar show="{{loading}}" />
+</view>
