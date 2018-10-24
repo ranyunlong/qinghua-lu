@@ -20,6 +20,12 @@ Component({
   methods: {
     onSelect({detail}) {
       this.triggerEvent('select', detail)
+    },
+    onChange({ detail }) {
+      this.triggerEvent('pickerchange', detail)
+    },
+    onCancel({ detail }) {
+      this.triggerEvent('pickercancel', detail)
     }
   }
 })

@@ -1,5 +1,5 @@
-<view class='item'>
-  <view class='content' bindtap='ontap'>
+<view class='item' catchtap='ontap'>
+  <view class='content'>
     <view class='info'>
       <text class='description'>{{data.title}}</text>
     </view>
@@ -9,6 +9,7 @@
   </view>
   <view class='footer'>
     <text class='category'>{{data.source_name}}</text>
-    <image wx:if="{{feedback}}" bindtap='onFeedBack' src='/assets/icons/arrow-down.png'></image>
+    <icons type="unfold" color="#666" size="{{30}}" wx:if="{{feedback}}" catchtap='onFeedBack' />
+    <!-- <image wx:if="{{feedback}}" catchtap='onFeedBack' src='/assets/icons/arrow-down.png'></image> -->
   </view>
 </view>

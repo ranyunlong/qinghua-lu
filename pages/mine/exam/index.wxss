@@ -1,1 +1,22 @@
 /* pages/mine/exam/index.wxss */
+:host {
+  border-top: 20rpx solid #f0f0f0;
+  background: #f0f0f0;
+}
+
+panel {
+  /* margin: 0 20rpx; */
+  padding: 0 20rpx;
+}
+
+steps {
+  display: block;
+  padding: 30rpx 0;
+  margin: 4rpx 0;
+  background: #fff;
+}
+
+buttons {
+  display: block;
+  margin-top: 20rpx;
+}

@@ -1,4 +1,5 @@
 const apis = require('../../../api/index.js')
+const navigator = require('../../../api/navigator.js')
 const { log } = console
 // pages/search/index.js
 Page({
@@ -15,7 +16,6 @@ Page({
     loading: false,
     history: []
   },
-
   setSearch({detail}) {
     this.setData({
       search: detail.title
@@ -50,12 +50,13 @@ Page({
       title: '搜索中',
       mask: true
     })
-    apis.articleSearch(openid, keywords, this.data.st)
+    apis.articleSearch(openid, keywords)
     .then(res=> {
       this.setData({
         searchList: res,
         keywords,
-        openid
+        openid,
+        st: 0
       })
       wx.hideLoading()
       this.setHistory(keywords)
@@ -102,9 +103,7 @@ Page({
    */
   openDetailPage(e) {
     const { iid, algs } = e.detail.data
-    wx.navigateTo({
-      url: '/pages/index/detail/index?iid=' + iid + '&algs=' + algs
-    })
+    navigator.openArticleDetailPage({iid, algs})
   },
 
   /**
@@ -159,34 +158,33 @@ Page({
    */
   onReachBottom: function () {
     const { keywords, openid, st, loading } = this.data
-    if (!this.data.loading) {
-      this.setData({
-        loading: true,
-        st: st + 1
+    // 防止重复刷新
+    if (loading) return;
+    this.setData({
+      loading: true,
+      st: st + 1
+    })
+    apis.articleSearch(openid, keywords, st + 1)
+      .then(res => {
+        if (res.length > 0) {
+          this.setData({
+            searchList: [...this.data.searchList, ...res],
+          })
+        } else {
+          wx.showToast({
+            title: '没有内容了！',
+            icon: 'none'
+          })
+        }
+        this.setData({
+          loading: false
+        })
       })
-      apis.articleSearch(openid, keywords, st + 1)
-        .then(res => {
-          if (res.length > 0) {
-            this.setData({
-              searchList: [...this.data.searchList, ...res],
-            })
-          } else {
-            wx.showToast({
-              title: '没有内容了！',
-              icon: 'none'
-            })
-          }
-          this.setData({
-            loading: false
-          })
+      .catch(err => {
+        this.setData({
+          loading: false
         })
-        .catch(err => {
-          this.setData({
-            loading: false
-          })
-          log(err)
-        })
-    }
+      })
   },
 
   /**

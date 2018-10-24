@@ -2,7 +2,7 @@
   display: block;
 }
 
-.home-detail-bar {
+.detail-bar {
   height: 40px;
   background: #fff;
   border-top: 1rpx solid #ddd;

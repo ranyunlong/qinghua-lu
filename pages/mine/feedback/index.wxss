@@ -1,0 +1,10 @@
+/* pages/mine/feedback/index.wxss */
+.page {
+  background: #f0f0f0;
+  min-height: 100vh;
+}
+
+buttons {
+  display: block;
+  margin-top: 20rpx;
+}

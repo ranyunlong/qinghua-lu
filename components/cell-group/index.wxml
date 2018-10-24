@@ -1,4 +1,21 @@
 <!--components/cell-group/index.wxml-->
 <view class='cell-group'>
-  <cell bindselect="onSelect" wx:for="{{data}}" icon="{{item.icon}}" title="{{item.title}}" arrow="{{item.arrow}}" wx:key="index" />
+  <cell 
+    bindselect="onSelect" 
+    wx:for="{{data}}" 
+    item="{{item}}"
+    icon="{{item.icon}}"
+    icon-type="{{item.iconType}}"
+    title="{{item.title}}" 
+    arrow="{{item.arrow}}"
+    value="{{item.value}}"
+    disabled="{{item.disabled}}"
+    navigateTo="{{item.navigateTo}}"
+    type="{{item.type}}"
+    picker-mode="{{item.pickerMode}}"
+    picker-range-key="{{item.pickerRangeKey}}"
+    picker-range="{{item.pickerRange}}"
+    bindpickerchange='onChange'
+    bindpickercancel='onCancel'
+    wx:key="index" />
 </view>

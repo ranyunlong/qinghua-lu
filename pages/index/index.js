@@ -1,4 +1,5 @@
 const apis = require('../../api/index.js')
+const navigator = require('../../api/navigator.js')
 
 const { log } = console 
 
@@ -9,7 +10,9 @@ Page({
     openid: null,
     wxCode: null,
     contents: {},
-    contentsLoading: false
+    cidIndex: 0,
+    contentsLoading: false,
+    refreshing: false
   },
 
   onFeedBack({detail}) {
@@ -23,8 +26,7 @@ Page({
         const { iid } = detail.data
         if (!uid) {
           // 检测是否提示过登录 false为需要提示
-          const confirmLogin = wx.getStorageSync('setting:confirm:login')
-          if (!confirmLogin) {
+          if (!wx.getStorageSync('setting:confirm:login')) {
             wx.showModal({
               title: '提示!',
               content: '您可以前往“个人中心”登录后,即可获取更喜爱的新闻资讯！',
@@ -55,9 +57,9 @@ Page({
         }
 
         if (tapIndex === 0) {
-          apis.articleFeedBackDown(openid, iid)
+          apis.articleFeedBackDown(uid, openid, iid)
           .then(res => {
-            console.log(res)
+            log(res)
           })
           .catch(e => log(e))
         }
@@ -88,28 +90,41 @@ Page({
 
   openDetailPage(e) {
     const { iid, algs } = e.detail.data
-    wx.navigateTo({
-      url: '/pages/index/detail/index?iid=' + iid + '&algs=' + algs
-    })
+    navigator.openArticleDetailPage({iid, algs})
   },
 
-  navigatorChange(data) {
-    const { id } = data.detail.data
+  onSwiperChange({ detail}) {
+    const { current } = detail
+    const { columns } = this.data
+    const cid = columns[current].id
     this.setData({
-      cid: id,
+      cidIndex: current,
+      cid
+    })
+
+    if (!this.data.contents[cid]) {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      return this.getContents(cid, this.data.openid)
+    }
+  },
+
+  onNavigatorChange({detail}) {
+    const { data, index } = detail
+    this.setData({
+      cid: data.id,
+      cidIndex: index,
       contentsLoading: false
     })
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    })
-    if (!this.data.contents[id]){
-      this.getContents(id, this.data.openid)
-      return;
+    if (!this.data.contents[data.id]){
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      return this.getContents(data.id, this.data.openid)
     }
-
-    wx.hideLoading()
-    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -128,7 +143,6 @@ Page({
         ...navigators,
         ...codeAndOpenid
       })
-      
       const homeContents = wx.getStorageSync('home:Contents')
       if (!homeContents) {
         this.getContents(cid, openid)
@@ -139,12 +153,14 @@ Page({
         wx.hideLoading()
       }
 
-    }).catch(e => log(e))
+    }).catch(e => {
+      wx.hideLoading()
+    })
   },
 
-  getContents(cid, openid) {
+  getContents(cid, openid, refresh) {
     let { contents } = this.data
-    if (contents[cid]) {
+    if (contents[cid] && !refresh) {
       wx.hideLoading()
       wx.stopPullDownRefresh()
       return;
@@ -155,8 +171,8 @@ Page({
       this.setData({
         contents
       })
-
-      wx.setStorageSync('home:Contents', {...this.data.contents})
+      this.setData({ refreshing: false })
+      wx.setStorageSync('home:Contents', this.data.contents)
       wx.hideLoading()
       wx.stopPullDownRefresh()
     }).catch(e => log(e))
@@ -194,30 +210,30 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    if (this.data.refreshing) return;
+    this.setData({refreshing: true})
     const { cid, openid} = this.data
     wx.showLoading({
       title: '更新中',
       mask: true
     })
-    this.getContents(cid, openid)
+    this.getContents(cid, openid, this.data.refreshing)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      contentsLoading: true
-    })
+    // 防止重复并发请求
+    if (this.data.contentsLoading) return;
+    this.setData({contentsLoading: true})
 
     const { cid, openid } = this.data
     apis.getHomeContents(cid, openid).then(res => {
       const contents = this.data.contents
       contents[cid].push(...res)
       this.setData({
-        contents
-      })
-      this.setData({
+        contents,
         contentsLoading: false
       })
     }).catch(e => log(e))

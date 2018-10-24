@@ -1,0 +1,5 @@
+<!--components/input-panel/index.wxml-->
+<view class="input-panel">
+    <view wx:if="{{ title }}" class="input-panel-title {{ hideTop ? 'input-panel-title-hide-top' : '' }}">{{ title }}</view>
+    <view class="input-panel-content {{ hideBorder ? 'input-panel-without-border' : '' }}"><slot></slot></view>
+</view>

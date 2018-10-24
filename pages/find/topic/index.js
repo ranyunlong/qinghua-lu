@@ -1,4 +1,5 @@
 const apis = require('../../../api/index.js')
+const navigator = require('../../../api/navigator.js')
 const { log } = console
 
 // pages/find/topic/index.js
@@ -35,9 +36,7 @@ Page({
   // 打开详情页
   openDetailPage(e) {
     const { iid, algs } = e.detail.data
-    wx.navigateTo({
-      url: '/pages/index/detail/index?iid=' + iid + '&algs=' + algs
-    })
+    navigator.openArticleDetailPage({ iid, algs})
   },
 
   /**

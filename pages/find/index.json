@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "发现",
   "usingComponents": {
-    "topic-list": "/components/topic-list/index"
+    "topic-list": "/components/topic-list/index",
+    "icons": "/components/icon/index"
   }
 }

@@ -1,4 +1,5 @@
 const apis = require('../../api/index.js')
+const navigator = require('../../api/navigator.js')
 const { log } = console
 
 // pages/find/index.js
@@ -8,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openid: null,
+    uid: null,
     topics: []
   },
 
@@ -16,26 +17,25 @@ Page({
 
   openTopicPage({detail}) {
     const { topic_id, mid, topic_name, icon } = detail.data
-    wx.navigateTo({
-      url: `topic/index?topic_id=${topic_id}&topic_name=${topic_name}&mid=${mid}&icon=${icon}`,
+    navigator.to({
+      url: 'topic/index',
+      data: { topic_id, topic_name, icon, mid, icon }
     })
   },
 
   // 打开文章详情页面
   openDetailPage(e) {
     const { mid } = e.detail.data
-    wx.navigateTo({
-      url: '/pages/index/detail/index?iid=' + mid
-    })
-  },  
+    navigator.openArticleDetailPage({ iid:mid })
+  }, 
 
   // 关注/取消关注
   onTapFollow({detail}) {
     if (!apis.checkLogin()) return;
-    const { openid } = this.data 
+    const { uid } = this.data 
     const { topic_id, collected } = detail.data
     const type = collected === 0 ? 1 : 0
-    apis.followTopic(openid, topic_id, type)
+    apis.followTopic(uid, topic_id, type)
       .then(res => {
         const index = detail.index
         const topics = this.data.topics
@@ -56,16 +56,16 @@ Page({
     wx.showLoading({
       title: '加载中'
     })
-    // From stroage get openid
-    const openid = wx.getStorageSync('openid')
-    this.getTopics(openid)
+    // From stroage get uid
+    const uid = wx.getStorageSync('uid')
+    this.getTopics(uid)
   },
 
-  getTopics(openid) {
+  getTopics(uid) {
     // Get Topics
-    apis.getTopic(openid).then(res => {
+    apis.getTopic(uid).then(res => {
       this.setData({
-        openid,
+        uid,
         topics: res
       })
       wx.hideLoading()
@@ -85,8 +85,8 @@ Page({
   onShow: function () {
     // 防止首次加载多次
     if (this.first) {
-      const { openid } = this.data
-      this.getTopics(openid)
+      const { uid } = this.data
+      this.getTopics(uid)
       return;
     }
     this.first = true
@@ -117,7 +117,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getTopics(this.data.uid)
   },
 
   /**

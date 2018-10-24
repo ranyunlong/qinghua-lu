@@ -1,0 +1,26 @@
+/* pages/mine/topic/index.wxss */
+:host {
+  background: #f0f0f0;
+}
+cell-group {
+  display: block;
+  border-top: 20rpx solid #f0f0f0;
+}
+.none {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 750rpx;
+}
+
+.none image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.none text {
+  padding: 40rpx;
+  font-size: 36rpx;
+  color: #666;
+}

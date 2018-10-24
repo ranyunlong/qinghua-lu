@@ -1,3 +1,7 @@
+const apis = require('../../../api/index.js')
+const navigator = require('../../../api/navigator.js')
+const { log } = console
+
 // pages/mine/collection/index.js
 Page({
 
@@ -5,14 +9,35 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid: null,
+    collectList: [],
+    loading: true
+  },
+  
 
+  /**
+   * 打开文章详情页面
+   */
+
+  openDetailPage({detail}) {
+    const { iid, algs } = detail.data
+    navigator.openArticleDetailPage({iid, algs})
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // Get article collect
+    const openid = wx.getStorageSync('openid')
+    if(!openid) return;
+    apis.getArticleCollect(openid).then(res => {
+      this.setData({
+        openid,
+        collectList: res,
+        loading: false
+      })
+    }).catch(e => log(e))
   },
 
   /**
@@ -40,7 +65,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**

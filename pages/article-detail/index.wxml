@@ -1,0 +1,28 @@
+<!--pages/index/detail/index.wxml-->
+<view class='header'>
+  <view class='soure'>
+    <image src='{{article.soureIcon}}'></image>
+    <text>{{article.soureName}}</text>
+  </view>
+  <text>{{article.pubTimeStr}}</text>
+</view>
+<view class='title'>
+  <text class='title'>{{article.title}}</text>
+</view>
+
+<view class='content'>
+  <block wx:for="{{article.content}}" wx:key="index">
+    <image bindtap='showImageView' bindlongtap='saveImage' data-src="{{item.url}}" mode='widthFix' wx:if="{{item.type === 'img' && item.url}}" src="{{item.url}}"></image>
+    <text wx:if="{{item.type === 'paragraphs'}}">{{item.content}}</text>
+  </block>
+</view>
+
+<view class='recommend' wx:if="{{recommend}}">
+  <view class='panel'>
+    <panel title="相关推荐" />
+  </view>
+  <news-list data="{{recommend}}" bindselect="openDetailPage" />
+</view>
+<home-detail-bar bindselect="onBarSelect" data="{{barItems}}" />
+
+<image catchtap='onPlay' class='play' src="{{!playing ? '/assets/icons/listen.png' : '/assets/icons/pause.png'}}"></image>

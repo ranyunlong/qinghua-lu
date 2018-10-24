@@ -1,7 +1,8 @@
 <!--pages/mine/collection/index.wxml-->
 <view class='mine-collection'>
-  <view class='none'>
-    <image src='/assets/icons/nocollect.png'></image>
+  <collection-list data="{{collectList}}" bindselect="openDetailPage" />
+  <view class='none' wx:if="{{collectList.length === 0 && !loading}}">
+    <icons type="collection" size="{{120}}" color="#17AFF8" />
     <text>暂无收藏内容</text>
   </view>
 </view>

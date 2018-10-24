@@ -1,9 +1,37 @@
-<home-navigator bindsearchtap="openSearchPage" data="{{columns}}" bindchange="navigatorChange" />
-<view class='news-list'>
-  <home-news-list
+<view class="page">
+  <home-navigator bindsearchtap="openSearchPage" data="{{columns}}" current="{{cidIndex}}" bindchange="onNavigatorChange" />
+
+  <!-- <home-news-list
+    class="news-list"
     bindselect="openDetailPage"
     data="{{contents[cid]}}"
     feedback
     bindfeedback="onFeedBack"
-    loading="{{contentsLoading}}" />
+    loading="{{contentsLoading}}"/> -->
+
+
+  <!-- 
+    注释的是swiper的内容切换方式 由于原生swiper性能问题暂时注释
+    若要使用swiper的切换方式 注释掉home-news-list即可
+  -->
+
+  <view class='wrap'>
+    <swiper current='{{cidIndex}}' bindchange='onSwiperChange'>
+      <swiper-item wx:for="{{columns}}" wx:key="index">
+        <home-news-list
+          enable-back-to-top 
+          scroll-y 
+          lower-threshold="{{50}}"
+          bindscrolltoupper="onUpper"
+          bindscrolltolower="onReachBottom" 
+          class="news-list" 
+          bindselect="openDetailPage" 
+          data="{{contents[item.id]}}" 
+          feedback 
+          bindfeedback="onFeedBack" 
+          loading="{{contentsLoading}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+
 </view>

@@ -1,4 +1,5 @@
 const apis = require('../../api/index.js')
+const navigator = require('../../api/navigator.js')
 
 // pages/mine/index.js
 Page({
@@ -9,51 +10,81 @@ Page({
     cellGroups1: [
       {
         title: '我的收藏',
-        icon: '../../assets/icons/collection.png',
-        arrow: true
+        icon: 'collection',
+        arrow: true,
+        auth: true
       },
       {
         title: '我的话题',
-        icon: '../../assets/icons/topic.png',
-        arrow: true
+        icon: 'message',
+        arrow: true,
+        auth: true
       },
       {
         title: '我的课程',
-        icon: '../../assets/icons/curriculum.png',
-        arrow: true
+        icon: 'task',
+        arrow: true,
+        auth: true
+      },
+      {
+        title: '个人设置',
+        icon: 'setup',
+        arrow: true,
+        auth: true
       }
     ],
     cellGroups2: [
       {
         title: '入学考试',
-        icon: '../../assets/icons/test.png',
-        arrow: true
+        icon: 'document',
+        arrow: true,
+        auth: true
       },
       {
         title: '意见反馈',
-        icon: '../../assets/icons/feedback.png',
+        icon: 'brush',
         arrow: true
       }
     ]
   },
 
   // 设置授权用户信息
-  setUserInfo(e) {
+  setUserInfo({detail}) {
     // 登录后台
-    apis.profluLogin().then(res => {
-      this.setData({
-        userInfo: e.detail.userInfo,
-        uid: res.uid
-      })
-      wx.setStorage({
-        key: 'user:info',
-        data: e.detail.userInfo,
+    apis.profluLogin().then(({uid}) => {
+      const { nickName, avatarUrl, gender, city, province } = detail.userInfo
+
+      // 更新用户信息
+      apis.profluUpdateWxUserInfo({
+        user_name: nickName,
+        icon: avatarUrl,
+        gender,
+        city,
+        province,
+        uid
+      }).then(res => {
+        
+        // Storage save user:info
+        wx.setStorage({
+          key: 'user:info',
+          data: detail.userInfo,
+        })
+
+        // Update view
+        this.setData({
+          userInfo: detail.userInfo,
+          uid
+        })
+      }) 
+      .catch(e => {
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
+        })
       })
     })
     .catch(err => {
-      this.setData({
-        userInfo: e.detail.userInfo
-      })
+      console.log(err)
       wx.showToast({
         title: '登录失败',
         icon: 'none'
@@ -62,7 +93,7 @@ Page({
   },
   
   onSelect({detail}) {
-    const { title } = detail
+    const { title, auth } = detail.item
     if (this.data.userInfo) {
       switch(title) {
         case '我的收藏':
@@ -70,8 +101,33 @@ Page({
             url: 'collection/index'
           })
         break;
+        case '个人设置':
+          wx.navigateTo({
+            url: 'setting/index'
+          })
+        break;
+        case '我的话题': 
+          wx.navigateTo({
+            url: 'topic/index',
+          })
+        break;
+        case '我的课程':
+        wx.navigateTo({
+          url: 'curriculum/index',
+        }) 
+        break;
+        case '入学考试':
+        wx.navigateTo({
+          url: 'exam/index'
+        })
+        break;
+        case '意见反馈':
+          wx.navigateTo({
+            url: 'feedback/index'
+          })
+        break;
       }
-    } else {
+    } else if (auth) {
       wx.showModal({
         title: '提示！',
         content: '请登录后操作。'

@@ -1,0 +1,4 @@
+<!--components/circle-progress/index.wxml-->
+<view class='circle-progress' style='width:{{size}}px;height:{{size}}px;'>
+  <canvas class="circle" canvas-id="{{id}}" style="width:{{size}}px;height:{{size}}px"></canvas> 
+</view>

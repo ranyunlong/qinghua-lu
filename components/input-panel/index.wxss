@@ -1,0 +1,41 @@
+.input-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.input-panel-title {
+  font-size: 28rpx;
+  line-height: 1;
+  color: #1c2438;
+  padding: 40rpx 28rpx 20rpx;
+}
+
+.input-panel-title-hide-top {
+  padding-top: 0;
+}
+
+.input-panel-content {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+
+.input-panel-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  border: 0 solid #e9eaec;
+  border-top-width: 1rpx;
+  border-bottom-width: 1rpx;
+}
+
+.input-panel-without-border::after {
+  border: 0 none;
+}

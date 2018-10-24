@@ -1,0 +1,32 @@
+<view class="cell input {{ error ? 'input-error' : '' }} {{ mode === 'wrapped' ? 'input-wrapped' : '' }}">
+    <view wx:if="{{ title }}" class="cell-hd input-title">{{ title }}</view>
+    <textarea
+        wx:if="{{ type === 'textarea' }}"
+        auto-height
+        disabled="{{ disabled }}"
+        focus="{{ autofocus }}"
+        value="{{ value }}"
+        placeholder="{{ placeholder }}"
+        confirm-type="{{confirmType}}"
+        maxlength="{{ maxlength }}"
+        class="input-input input-textarea cell-bd {{ right ? 'input-input-right' : '' }}"
+        placeholder-class="input-placeholder"
+        bindinput="handleInputChange"
+        bindfocus="handleInputFocus"
+        bindblur="handleInputBlur"
+    ></textarea>
+    <input
+        wx:else
+        type="{{ type }}"
+        disabled="{{ disabled }}"
+        focus="{{ autofocus }}"
+        value="{{ value }}"
+        placeholder="{{ placeholder }}"
+        maxlength="{{ maxlength }}"
+        class="input-input cell-bd {{ right ? 'input-input-right' : '' }}"
+        placeholder-class="input-placeholder"
+        bindinput="handleInputChange"
+        bindfocus="handleInputFocus"
+        bindblur="handleInputBlur"
+    />
+</view>

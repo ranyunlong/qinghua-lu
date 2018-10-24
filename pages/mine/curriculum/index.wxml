@@ -1,0 +1,14 @@
+<!--pages/mine/curriculum/index.wxml-->
+<view class='curriculum'>
+  <view class='item' wx:for="{{curriculums}}" wx:key="index">
+    <image mode="widthFix" lazy-load src='https://10.url.cn/qqcourse_logo_ng/ajNVdqHZLLD2cgguuFR5OHGSeiaE40y6r0mR68ZGtSFDsrYpFbM3ptQnibaH4FnPBQjmAEfYia85W8/600'></image>
+    <view class='content'>
+      <text class='title'>课程标题</text>
+      <text>课程描述</text>
+    </view>
+    <view class='progress'>
+      <circle-progress value="{{value}}" size="{{30}}" show-percent duration="{{1000}}" animation />
+      <text>已完成</text>
+    </view>
+  </view>
+</view>

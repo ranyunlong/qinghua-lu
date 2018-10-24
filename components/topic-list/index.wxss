@@ -1,6 +1,6 @@
 /* components/find-list/index.wxss */
 .topic-list {
-  border-top: 30rpx solid #f0f0f0;
+  border-top: 20rpx solid #f0f0f0;
 }
 .topic-list panel {
   padding: 0 20rpx;

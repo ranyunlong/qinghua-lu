@@ -1,2 +1,4 @@
 <!--components/steps/index.wxml-->
-<text>components/steps/index.wxml</text>
+<view class="steps">
+    <slot></slot>
+</view>

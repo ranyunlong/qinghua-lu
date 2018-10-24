@@ -1,6 +1,6 @@
 /* pages/mine/collection/index.wxss */
 .mine-collection {
-
+  border-top: 20rpx solid #f0f0f0;
 }
 .mine-collection .none {
   display: flex;

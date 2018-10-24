@@ -1,13 +1,18 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/index/detail/index",
     "pages/index/search/index",
     "pages/find/index",
     "pages/find/topic/index",
     "pages/mine/index",
+    "pages/mine/topic/index",
     "pages/mine/collection/index",
-    "pages/mine/exam/index"
+    "pages/mine/curriculum/index",
+    "pages/mine/feedback/index",
+    "pages/mine/setting/index",
+    "pages/mine/exam/index",
+    "pages/mine/curriculum/detail/index",
+    "pages/article-detail/index"
   ],
   "window":{
     "backgroundTextStyle": "dark",

@@ -34,6 +34,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    baidu_ApiKey: 'wxEX40cgOZ1XIkTqvQ2Qoyok',
+    baidu_SecretKey: 'lhFHnBkjxTqRm2NXTHHURlf3VVg29rQy',
+    baidu_Token: ''
   }
 })

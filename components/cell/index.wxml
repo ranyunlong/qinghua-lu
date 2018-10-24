@@ -1,6 +1,32 @@
 <!--components/cell/index.wxml-->
-<view class='cell' bindtap='onTap'>
-  <image class='icon' src='{{icon}}' wx:if="{{icon}}"></image>
+<picker 
+  mode="{{pickerMode ? pickerMode : 'selector'}}"
+  range='{{pickerRange}}'
+  range-key='{{pickerRangeKey}}'
+  disabled='{{disabled}}'
+  value="{{pickerIndex}}"
+  bindchange='onChange'
+  bindcancel='onCancel'
+  wx:if="{{type === 'picker'}}">
+  <view class='cell' bindtap='onTap'>
+    <icons class='ico' style="margin-right: 30rpx;" size="{{45}}" type="{{icon}}" wx:if="{{icon && iconType !== 'image'}}" />
+    <image class='icon' src='{{icon}}' wx:if="{{icon && iconType === 'image'}}"></image>
+    <text class='title'>{{title ? title : '标题'}}</text>
+    <view class='value'>
+      <slot />
+      <text wx:if="value">{{value}}</text>
+      <icons class='arrow' wx:if="{{arrow}}" size="{{35}}" type="enter" />
+    </view>
+  </view> 
+</picker>
+
+
+<view wx:else class='cell' bindtap='onTap'>
+  <icons class='ico' style="margin-right: 30rpx;" size="{{45}}" type="{{icon}}" wx:if="{{icon && iconType !== 'image'}}" />
+  <image class='icon' src='{{icon}}' wx:if="{{icon && iconType === 'image'}}"></image>
   <text class='title'>{{title ? title : '标题'}}</text>
-  <image class='arrow' wx:if="{{arrow}}" src='../../assets/icons/arrow-right.png'></image>
+  <view class='value'>
+    <text wx:if="value">{{value}}</text>
+    <icons class='arrow' wx:if="{{arrow}}" size="{{35}}" type="enter" />
+  </view>
 </view> 

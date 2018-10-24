@@ -175,11 +175,12 @@ function getNewsRelated(iid, uid, ct) {
  * @param { Date } dt? 可选 默认 Date.parse(new Date()) / 1000
  * @param { plt } plt? 可选 默认 'wechat'
  */
-function articleFeedBackDown(openid, iid, dt, plt) {
+function articleFeedBackDown(uid, openid, iid, dt, plt) {
+  console.log(uid)
   return new Promise((resolve, reject) => {
     const url = `${botHost}/behavior/v1/RVCQS9UR56/down`
     baseRequest(url, {
-      uid: openid,
+      uid: uid || openid,
       guid: openid,
       dt: dt || Date.parse(new Date()) / 1000,
       iid,
@@ -239,6 +240,20 @@ function profluLogin() {
   })
 }
 
+
+/**
+ * @api profluUpdateWxUserInfo
+ * @author <>
+ * 更新用户信息
+ */
+function profluUpdateWxUserInfo(uid, user_name, icon, gender, city, province) {
+  const url = `${profluHost}/vipSystem/wxapp/wxuser/updateWxUserInfo`
+  return new Promise((resolve, reject) => {
+    baseRequest(url, { uid, user_name, icon, gender, city, province})
+      .then(res => resolve(res))
+      .catch(e => reject(e))
+  })
+}
 /**
  * @api profluLogin
  * @author <>
@@ -376,9 +391,10 @@ function ArticleUp(uid, iid, type = 0, plt = 'wechat', dt = Date.parse(new Date(
 function followTopic(uid, topic_id, type = 0, plt = 'wechat', dt = Date.parse(new Date()) / 1000) {
   const url = `${botHost}/behavior/v1/RVCQS9UR56/subtopic`
   return new Promise((resolve, reject) => {
+    const openid = wx.getStorageSync('openid')
     baseRequest(url, {
       uid,
-      guid: uid,
+      guid: openid,
       dt,
       topic_id,
       plt,
@@ -416,7 +432,7 @@ function getTopicDetail(uid, id) {
  */
 function getTopics(uid, topic_id) {
   const url = `${botbrainHost}/rec/v1/RVCQS9UR56/topic`
-  const guid = uid
+  const guid = wx.getStorageSync('openid')
   return new Promise((reslove, reject) => {
     baseRequest(url, { uid, guid, topic_id })
       .then(res => reslove(res.data.data.items))
@@ -449,6 +465,57 @@ function checkLogin() {
   return Boolean(userInfo)
 }
 
+
+/**
+ * @api getMyTopics
+ * @author <>
+ * 获取我的话题列表
+ */
+function getMyTopics(uid) {
+  const url = `${botbrainHost}/meta/v1/RVCQS9UR56/personal/topic/list`
+  const openid = wx.getStorageSync('openid')
+  return new Promise((resolve, reject) => {
+    if (!uid) uid = openid
+    baseRequest(url, { uid }).then(res => resolve(res.data.data)).catch(e => reject(e))
+  })
+}
+
+/**
+ * @api getShareArticlePhoto
+ * @author <>
+ * 获取分享图片
+ */
+function getShareArticlePhoto(article_title, article_time, article_brand, path, article_content = '', template_key = 'efdf56345c95a82a49fd82c0cb492c0e') {
+  const data = {
+    article_title,
+    article_time,
+    article_brand,
+    article_content,
+    template_key,
+    path
+  }
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: 'https://shareapi.aldwx.com/Main/action/Template/Template/applet_htmlpng',
+      data,
+      method: 'post',
+      success: r => resolve(r.data.data),
+      fail: e => reject(e)
+    })
+  })
+}
+
+/**
+ * @api submitFeedback
+ * @author <>
+ * @url https://wxapp.proflu.cn/vipSystem/wxapp/personal/updateFeedback
+ * 提交意见
+ */
+function submitFeedback(uid, feedback) {
+  const url = `${profluHost}/vipSystem/wxapp/personal/updateFeedback`
+  return baseRequest(url, { uid, feedback})
+}
+
 module.exports = {
   getHomeNavigators,
   getHomeContents,
@@ -460,6 +527,7 @@ module.exports = {
   articleFeedBackDislike,
   articleSearch,
   profluLogin,
+  profluUpdateWxUserInfo,
   queryPlanInfo,
   getTopic,
   getArticleCollect,
@@ -468,5 +536,8 @@ module.exports = {
   checkLogin,
   getTopicDetail,
   getTopics,
-  followTopic
+  followTopic,
+  getShareArticlePhoto,
+  getMyTopics,
+  submitFeedback
 }

@@ -1,4 +1,24 @@
-<!--pages/mine/exam/index.wxml-->
-<text>陆向谦创新创业实验室入学考试</text>
-<text>考试流程</text>
-<view></view>
+<!-- <text>陆向谦创新创业实验室入学考试</text> -->
+<panel title="考试流程" bold/>
+<steps 
+  direction="vertical"
+  current="{{0}}"
+  status="wait">
+  <step title="课程学习">
+    <view slot="content">
+        完成本阶段，需要在我的课程里在线学习1-5的基础课程视频
+    </view>
+  </step>
+  <step title="提交个人培养方案">
+    <view slot="content">
+        去提交
+    </view>
+  </step>
+  <step title="实习考核">
+    <view slot="content">
+        这里是该步骤的描述信息
+    </view>
+  </step>
+</steps>
+
+<buttons type="primary" long>下一步</buttons>

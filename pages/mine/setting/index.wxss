@@ -1,0 +1,9 @@
+/* pages/mine/setting/index.wxss */
+.page {
+  min-height: 100vh;
+  background: #f0f0f0;
+}
+.page cell-group {
+  display: block;
+  border-top: 20rpx solid #f0f0f0;
+}

@@ -38,9 +38,7 @@
   background: #fff;
 }
 
-.search-bar image {
-  width: 50rpx;
-  height: 50rpx;
+.search-bar icons {
   padding: 20rpx;
 }
 

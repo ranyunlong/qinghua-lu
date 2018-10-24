@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的话题",
+  "usingComponents": {
+    "cell-group": "/components/cell-group/index",
+    "icons": "/components/icon/index"
+  }
+}

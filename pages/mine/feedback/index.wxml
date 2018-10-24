@@ -1,0 +1,8 @@
+<!--pages/mine/feedback/index.wxml-->
+<view class='page'>
+  <view class='input'>
+    <inputs bindchange="handleTextChange" maxlength="{{512}}" autofocus placeholder="请输入您的意见或建议..." type="textarea" value="{{text}}"  />
+    <inputs bindchange="handlePhoneChange" maxlength="{{11}}" title="联系电话" placeholder="选填，便于我们练习你" type="number" value="{{phone}}" />
+  </view>
+  <buttons bindtap='handlerSubmit' type="primary" long>提交</buttons>
+</view>

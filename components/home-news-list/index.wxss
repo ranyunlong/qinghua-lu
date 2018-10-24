@@ -1,2 +1,14 @@
-/* components/home-news-list/index.wxss */
+:host {
+  display: block;
+  height: inherit;
+  width: inherit;
+}
+scroll-view {
+  width: inherit;
+  height: inherit;
+}
 
+.item {
+  height: inherit;
+  width: inherit;
+}

@@ -1,0 +1,146 @@
+.step-ico {
+  width: 24px;
+  height: 100%;
+  border-radius: 100%;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  border: #dddee1 solid 1px;
+}
+
+.step-ico-in {
+  vertical-align: baseline;
+}
+
+.step-line {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 100%;
+  height: 1px;
+  background: #dddee1;
+}
+
+.step-horizontal .step-ico::after {
+  position: absolute;
+  top: 11px;
+  left: 23px;
+  z-index: 1;
+  content: '';
+  height: 1px;
+  background: #fff;
+  width: 10px;
+}
+
+.step-horizontal .step-item-main {
+  text-align: center;
+}
+
+.step-horizontal .step-ico::before {
+  position: absolute;
+  top: 11px;
+  left: -11px;
+  z-index: 1;
+  content: '';
+  height: 1px;
+  background: #fff;
+  width: 10px;
+}
+
+.step-ico {
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.step-process .step-ico {
+  border: #2d8cf0 solid 1px;
+  color: #fff;
+  background: #2d8cf0;
+}
+
+.step-wait .step-ico {
+  border: #e9eaec solid 1px;
+  color: #e9eaec;
+}
+
+.step-wait .step-line {
+  background: #2d8cf0;
+}
+
+.step-finish .step-ico {
+  border: #2d8cf0 solid 1px;
+  color: #2d8cf0;
+}
+
+.step-finish .step-line {
+  background: #2d8cf0;
+}
+
+.step-error .step-ico {
+  border: #ed3f14 solid 1px;
+  color: #ed3f14;
+}
+
+.step-error .step-line {
+  background: #ed3f14;
+}
+
+.step-item {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-left: 10px;
+  vertical-align: top;
+}
+
+.step-item-ico {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.step-item-main {
+  margin-top: 20px;
+  clear: both;
+}
+
+.step-item-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1c2438;
+}
+
+.step-item-content {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-top: 2px;
+  color: #80848f;
+  padding: 20rpx 20rpx 20rpx 0;
+}
+
+.step-vertical {
+  padding-bottom: 30px;
+}
+
+.step-vertical .step-item-ico {
+  width: 24px;
+  float: left;
+}
+
+.step-vertical .step-item-main {
+  margin-left: 40px;
+  margin-top: 0;
+  clear: inherit;
+}
+
+.step-vertical .step-line {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 10px;
+  margin: 0 0 0 12px;
+  width: 1px;
+}

@@ -1,10 +1,4 @@
 /* pages/index/detail/index.wxss */
-
-.page {
-  display: flex;
-  flex-direction: column;
-}
-
 .header {
   font-size: 30rpx;
   color: #666;
@@ -54,6 +48,7 @@
 
 .recommend {
   border-top: 35rpx solid #efefef;
+  padding-bottom: 100rpx;
 }
 
 .recommend .panel{
@@ -65,4 +60,12 @@ home-detail-bar {
   position: fixed;
   bottom: 0;
   z-index: 1;
+}
+
+.play {
+  width: 150rpx;
+  height: 150rpx;
+  position: fixed;
+  bottom: 300rpx;
+  right: 0rpx;
 }

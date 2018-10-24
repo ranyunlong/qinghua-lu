@@ -6,7 +6,16 @@ Component({
   properties: {
     data: Array,
     loading: Boolean,
-    feedback: Boolean
+    feedback: Boolean,
+    scrollY: Boolean,
+    scrollX: Boolean,
+    enableBackToTop: Boolean,
+    scrollWithAnimation: Boolean,
+    scrollIntoView: Boolean,
+    scrollTop: Number,
+    scrollLeft: Number,
+    upperThreshold: Number,
+    lowerThreshold: Number
   },
 
   /**
@@ -20,11 +29,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    select(e) {
-      this.triggerEvent('select', { ...e.detail })
+    select({detail}) {
+      this.triggerEvent('select', detail)
     },
-    onFeedBack(e) {
-      this.triggerEvent('feedback', { ...e.detail })
+    onFeedBack({detail}) {
+      this.triggerEvent('feedback', detail)
+    },
+    onScrollToLower({detail}){
+      this.triggerEvent('scrolltolower', detail)
+    },
+    onScrollToUpper({detail}) {
+      this.triggerEvent('scrolltoupper', detail)
+    },
+    onScroll({detail}) {
+      this.triggerEvent('scroll', detail)
     }
   }
 })

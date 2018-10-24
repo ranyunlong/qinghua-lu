@@ -1,0 +1,47 @@
+/* pages/mine/curriculum/index.wxss */
+:host {
+  border-top: 20rpx solid #f0f0f0;
+}
+
+.curriculum {
+  
+}
+
+.curriculum .item {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 20rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+
+.curriculum .item image {
+  flex: 1;
+}
+
+.curriculum .item .content {
+  flex: 2;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  color: #666;
+  line-height: 40rpx;
+  height: inherit;
+  justify-content: space-between;
+}
+
+.curriculum .item .content .title {
+  font-size: 36rpx;
+  color: #3c3c3c;
+  line-height: 48rpx;
+  min-height: 50rpx;
+}
+
+.curriculum .item .progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #666;
+}
