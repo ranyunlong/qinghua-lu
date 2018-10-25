@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "我的课程",
   "usingComponents": {
-    "circle-progress": "/components/circle-progress/index"
+    "circle-progress": "/components/circle-progress/index",
+    "icons": "/components/icon/index"
   }
 }

@@ -1,8 +1,8 @@
 <!--components/topic-list/item.wxml-->
-<view class='topic-list-item' catchtap='onTapSelect'>
+<view class='topic-list-item' catchtap='handleTapSelect'>
   <view class='header'>
-    <text catchtap='onTapToptic'>#{{data.topic_name}}#</text>
-    <buttons type="primary" catchtap='onTapFollow' size='mini'>{{data.collected ? '+关注' : '已关注'}}</buttons>
+    <text catchtap='handleTapToptic'>#{{data.topic_name}}#</text>
+    <buttons type="primary" catchtap='handleTapFollow' size='mini'>{{data.collected ? '+关注' : '已关注'}}</buttons>
   </view>
   <text class='content'>{{data.title}}</text>
   <view class='footer'>

@@ -1,7 +1,7 @@
 <!--components/cell-group/index.wxml-->
 <view class='cell-group'>
   <cell 
-    bindselect="onSelect" 
+    bindselect="handleSelect" 
     wx:for="{{data}}" 
     item="{{item}}"
     icon="{{item.icon}}"
@@ -15,7 +15,7 @@
     picker-mode="{{item.pickerMode}}"
     picker-range-key="{{item.pickerRangeKey}}"
     picker-range="{{item.pickerRange}}"
-    bindpickerchange='onChange'
-    bindpickercancel='onCancel'
+    bindpickerchange='handleChange'
+    bindpickercancel='handleCancel'
     wx:key="index" />
 </view>

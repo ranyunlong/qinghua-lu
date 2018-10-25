@@ -14,13 +14,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    article: null,
-    recommend: null,
-    iid: null,
-    openid: null,
-    scrollTop: 0,
-    playing: false,
-    barItems: [
+    article: null,    // Article data
+    recommend: null,  // Recommend list
+    iid: null,        // Article id
+    openid: null,     // Devices id
+    scrollTop: 0,     // Scroll top number
+    playing: false,   // Background audio play state
+    barItems: [       // page bottom bar data
       {
         label: '收藏',
         icon: '/assets/icons/collection-defalut.png',
@@ -44,13 +44,12 @@ Page({
     ]
   },
 
-  playIndex: 0,
-  playTexts: [],
-  pageIsHide: false,
+  playIndex: 0,       // The page, background play index
+  playTexts: [],      // The page, play contents 
+  pageIsHide: false,  // Page show state
 
-  // 播放文章事件
-
-  onPlay() {
+  // Handle article page play button
+  handlePlay() {
     const { title, content } = this.data.article
     const audio = wx.getBackgroundAudioManager()
     const host = 'http://tsn.baidu.com/text2audio?'
@@ -88,10 +87,12 @@ Page({
       }
     }
 
+  // Get play text list
     this.playTexts = content.filter(k => {
       return k.type === 'paragraphs' && k.content.length > 0
     }).map(k => k.content)
 
+     // Play audio source
     const play = () => {
       args.tex = this.playTexts[this.playIndex]
       const dataUrl = host + navigator.qs(args)
@@ -101,6 +102,7 @@ Page({
       })
     }
 
+    // Play next audio source
     const next = () => {
       if (this.pageIsHide) return;
       if (this.playIndex >= this.playTexts.length - 1) return;
@@ -132,7 +134,7 @@ Page({
   },
 
   // 工具栏选择时间
-  onBarSelect({detail}) { 
+  handleBarSelect({detail}) { 
     const { index, data } = detail
     const { iid, openid } = this.data
 

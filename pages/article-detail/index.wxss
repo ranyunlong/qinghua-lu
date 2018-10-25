@@ -42,7 +42,7 @@
 .content text {
   padding: 20rpx 0;
   line-height: 60rpx;
-  text-indent: 36rpx;
+  /* text-indent: 36rpx; */
   color: #2a2a2a;
 }
 

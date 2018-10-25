@@ -19,13 +19,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTapToptic({detail}) {
+    handleTapToptic({detail}) {
       this.triggerEvent('toptic', detail)
     },
-    onTapFollow({ detail}) {
+    handleTapFollow({ detail}) {
       this.triggerEvent('follow', detail)
     },
-    onTapSelect({detail}) {
+    handleTapSelect({detail}) {
       this.triggerEvent('select', detail)
     }
   }

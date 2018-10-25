@@ -1,11 +1,11 @@
 <!--components/home-navigator/index.wxml-->
 <view class='home-navigator'>
-  <view class='icon' bindtap='onSearch'>
+  <view class='icon' bindtap='handleSearch'>
     <icons type="search" size="{{60}}" color="#666" />
   </view>
   <scroll-view scroll-x>
     <view class='list'>
-      <item bindselect="onSelect" wx:for="{{data}}" index="{{index}}" active="{{index === current}}" item="{{item}}" wx:key="item.id"/> 
+      <item bindselect="handleSelect" wx:for="{{data}}" index="{{index}}" active="{{index === current}}" item="{{item}}" wx:key="item.id"/> 
     </view>
   </scroll-view>
 </view>

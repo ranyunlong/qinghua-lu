@@ -1,4 +1,4 @@
-<view class='item' catchtap='ontap'>
+<view class='item' catchtap='handleTap'>
   <view class='content'>
     <view class='info'>
       <text class='description'>{{data.title}}</text>
@@ -9,7 +9,6 @@
   </view>
   <view class='footer'>
     <text class='category'>{{data.source_name}}</text>
-    <icons type="unfold" color="#666" size="{{30}}" wx:if="{{feedback}}" catchtap='onFeedBack' />
-    <!-- <image wx:if="{{feedback}}" catchtap='onFeedBack' src='/assets/icons/arrow-down.png'></image> -->
+    <icons type="unfold" color="#666" size="{{30}}" wx:if="{{showMenu}}" catchtap='handleOpenMenu' />
   </view>
 </view>

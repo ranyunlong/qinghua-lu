@@ -5,8 +5,8 @@
   range-key='{{pickerRangeKey}}'
   disabled='{{disabled}}'
   value="{{pickerIndex}}"
-  bindchange='onChange'
-  bindcancel='onCancel'
+  bindchange='handleChange'
+  bindcancel='handleCancel'
   wx:if="{{type === 'picker'}}">
   <view class='cell' bindtap='onTap'>
     <icons class='ico' style="margin-right: 30rpx;" size="{{45}}" type="{{icon}}" wx:if="{{icon && iconType !== 'image'}}" />
@@ -21,7 +21,7 @@
 </picker>
 
 
-<view wx:else class='cell' bindtap='onTap'>
+<view wx:else class='cell' bindtap='handleTap'>
   <icons class='ico' style="margin-right: 30rpx;" size="{{45}}" type="{{icon}}" wx:if="{{icon && iconType !== 'image'}}" />
   <image class='icon' src='{{icon}}' wx:if="{{icon && iconType === 'image'}}"></image>
   <text class='title'>{{title ? title : '标题'}}</text>

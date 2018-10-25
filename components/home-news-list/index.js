@@ -6,7 +6,7 @@ Component({
   properties: {
     data: Array,
     loading: Boolean,
-    feedback: Boolean,
+    showMenu: Boolean,
     scrollY: Boolean,
     scrollX: Boolean,
     enableBackToTop: Boolean,
@@ -29,19 +29,19 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    select({detail}) {
+    handleSelect({detail}) {
       this.triggerEvent('select', detail)
     },
-    onFeedBack({detail}) {
-      this.triggerEvent('feedback', detail)
+    handleOpenMenu({detail}) {
+      this.triggerEvent('openmenu', detail)
     },
-    onScrollToLower({detail}){
+    handleScrollToLower({detail}){
       this.triggerEvent('scrolltolower', detail)
     },
-    onScrollToUpper({detail}) {
+    handleScrollToUpper({detail}) {
       this.triggerEvent('scrolltoupper', detail)
     },
-    onScroll({detail}) {
+    handleScroll({detail}) {
       this.triggerEvent('scroll', detail)
     }
   }

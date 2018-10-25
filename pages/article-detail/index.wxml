@@ -12,7 +12,7 @@
 
 <view class='content'>
   <block wx:for="{{article.content}}" wx:key="index">
-    <image bindtap='showImageView' bindlongtap='saveImage' data-src="{{item.url}}" mode='widthFix' wx:if="{{item.type === 'img' && item.url}}" src="{{item.url}}"></image>
+    <image catchtap='showImageView' data-src="{{item.url}}" mode='widthFix' wx:if="{{item.type === 'img' && item.url}}" src="{{item.url}}"></image>
     <text wx:if="{{item.type === 'paragraphs'}}">{{item.content}}</text>
   </block>
 </view>
@@ -23,6 +23,6 @@
   </view>
   <news-list data="{{recommend}}" bindselect="openDetailPage" />
 </view>
-<home-detail-bar bindselect="onBarSelect" data="{{barItems}}" />
+<home-detail-bar bindselect="handleBarSelect" data="{{barItems}}" />
 
-<image catchtap='onPlay' class='play' src="{{!playing ? '/assets/icons/listen.png' : '/assets/icons/pause.png'}}"></image>
+<image catchtap='handlePlay' class='play' src="{{!playing ? '/assets/icons/listen.png' : '/assets/icons/pause.png'}}"></image>

@@ -2,10 +2,11 @@
 <topic-list 
     data="{{topics}}"  
     bindtoptic="openTopicPage" 
-    bindfollow="onTapFollow" 
+    bindfollow="handleTapFollow" 
+    loading="{{loading}}"
     bindselect="openDetailPage"  />
 
-<view class='none' wx:if="{{topics.length === 0 && !loading}}">
+<view class='none' wx:if="{{topics.length === 0 && loading}}">
   <icons type="message" size="{{120}}" color="#17AFF8" />
   <text>暂无推荐话题</text>
 </view>

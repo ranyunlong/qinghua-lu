@@ -1,5 +1,5 @@
 <!--pages/mine/topic/index.wxml-->
-<cell-group data="{{topics}}" bindselect="handlerSelect" />
+<cell-group data="{{topics}}" bindselect="handleSelect" />
 <view class='none' wx:if="{{topics.length === 0 && !loading}}">
   <icons type="message" size="{{120}}" color="#17AFF8" />
   <text>暂无话题</text>

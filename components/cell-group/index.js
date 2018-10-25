@@ -18,13 +18,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onSelect({detail}) {
+    handleSelect({detail}) {
       this.triggerEvent('select', detail)
     },
-    onChange({ detail }) {
+    handleChange({ detail }) {
       this.triggerEvent('pickerchange', detail)
     },
-    onCancel({ detail }) {
+    handleCancel({ detail }) {
       this.triggerEvent('pickercancel', detail)
     }
   }

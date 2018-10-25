@@ -20,12 +20,14 @@ Page({
     this.setData({
       search: detail.title
     })
-    this.onSearch(this.data.openid, detail.title)
+    this.handleSearch(this.data.openid, detail.title)
   },
 
-  // 搜索框input事件
-  onInput(e) {
-    const { value } = e.detail
+  /**
+   * Handle event input
+   */
+  handleInput({ detail}) {
+    const { value } = 
     this.setData({
       search: value
     })
@@ -37,15 +39,19 @@ Page({
     }
     const openid = wx.getStorageSync('openid')
     if (openid) {
-      this.onSearch(openid, value)
+      this.handleSearch(openid, value)
     } else {
       apis.getWxCodeOpenid().then(res=> {
         wx.setStorageSync('openid', res.openid)
-        this.onSearch(res.openid, e.detail.value)
+        this.handleSearch(res.openid, detail.value)
       }).catch(err => log(err))
     }
   },
-  onSearch(openid, keywords) {
+
+  /**
+   * Handle event search
+   */
+  handleSearch(openid, keywords) {
     wx.showLoading({
       title: '搜索中',
       mask: true
@@ -63,14 +69,20 @@ Page({
     })
     .catch(err => log(err))
   },
-  // 搜索框clear事件
-  onClear(e) {
+  
+  /**
+   * Handle event clear
+   */
+  handleClear(e) {
     this.setData({
       search: ''
     })
-    this.onInput({detail:{value:''}})
+    this.handleInput({detail:{value:''}})
   },
 
+  /**
+   * Handle event setHistory
+   */
   setHistory(value) {
     let { history } = this.data
     let repeat = false

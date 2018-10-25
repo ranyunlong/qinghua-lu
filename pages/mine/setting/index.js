@@ -9,7 +9,7 @@ Page({
     cellGroups1: []
   },
 
-  onPickerChange({detail}) {
+  handlePickerChange({detail}) {
     const { cellGroups1, settings } = this.data
     const result = cellGroups1.map(k => {
       if (k.title === '朗读设置') {

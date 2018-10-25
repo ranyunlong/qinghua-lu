@@ -1,12 +1,12 @@
 <view class="page">
-  <home-navigator bindsearchtap="openSearchPage" data="{{columns}}" current="{{cidIndex}}" bindchange="onNavigatorChange" />
+  <home-navigator bindsearchtap="openSearchPage" data="{{columns}}" current="{{cidIndex}}" bindchange="handleNavigatorChange" />
 
   <!-- <home-news-list
     class="news-list"
     bindselect="openDetailPage"
     data="{{contents[cid]}}"
-    feedback
-    bindfeedback="onFeedBack"
+    show-menu
+    bindopenmenu="handleFeedBack"
     loading="{{contentsLoading}}"/> -->
 
 
@@ -16,19 +16,18 @@
   -->
 
   <view class='wrap'>
-    <swiper current='{{cidIndex}}' bindchange='onSwiperChange'>
+    <swiper current='{{cidIndex}}' bindchange='handleSwiperChange'>
       <swiper-item wx:for="{{columns}}" wx:key="index">
         <home-news-list
           enable-back-to-top 
           scroll-y 
           lower-threshold="{{50}}"
-          bindscrolltoupper="onUpper"
           bindscrolltolower="onReachBottom" 
           class="news-list" 
           bindselect="openDetailPage" 
           data="{{contents[item.id]}}" 
-          feedback 
-          bindfeedback="onFeedBack" 
+          show-menu
+          bindopenmenu="handleFeedBack" 
           loading="{{contentsLoading}}" />
       </swiper-item>
     </swiper>

@@ -2,8 +2,8 @@
 <view class='header'>
   <search-bar  
     value="{{search}}" 
-    bindconfirm="onInput" 
-    bindclear="onClear"
+    bindconfirm="handleInput" 
+    bindclear="handleClear"
     placeholder="搜索一下"
     show-clear />
   <view class='panel'>

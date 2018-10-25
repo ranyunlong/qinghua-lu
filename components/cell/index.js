@@ -40,7 +40,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTap() {
+    handleTap() {
       this.triggerEvent('select', this.properties)
       if (this.properties.navigateTo) {
         wx.navigateTo({
@@ -48,14 +48,14 @@ Component({
         })
       }
     },
-    onChange({detail}) {
+    handleChange({detail}) {
       this.triggerEvent('pickerchange', { 
         ...detail, 
         origin: this.properties.pickerRange, 
         selected: this.properties.pickerRange[detail.value]
       })
     },
-    onCancel({detail}) {
+    handleCancel({detail}) {
       this.triggerEvent('pickercancel', detail)
     }
   }

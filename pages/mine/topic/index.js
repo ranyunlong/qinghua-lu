@@ -8,10 +8,10 @@ Page({
    */
   data: {
     topics: [],
-    loading: true
+    loading: false
   },
 
-  handlerSelect({detail}) {
+  handleSelect({detail}) {
     const { topic_id, title, icon } = detail.item
     navigator.to({
       url: '/pages/find/topic/index',
@@ -28,6 +28,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getContents()
+
+  },
+
+  getContents() {
+    const { loading } = this.data
+    if (loading) return;
+    this.data.loading = true
     const uid = wx.getStorageSync('uid')
     wx.showLoading({
       title: '加载中'
@@ -62,7 +70,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getContents()
   },
 
   /**

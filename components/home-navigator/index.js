@@ -19,13 +19,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onSelect(e) {
+    handleSelect(e) {
       this.triggerEvent('change', {
         index: e.detail.index,
         data: e.detail.item
       })
     },
-    onSearch() {
+    handleSearch() {
       this.triggerEvent('searchtap', {})
     }
   }

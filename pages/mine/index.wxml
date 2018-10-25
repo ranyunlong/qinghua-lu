@@ -16,8 +16,8 @@
   </view>
   <user-select-bar></user-select-bar>
   <view class='list-group'>
-    <cell-group bindselect="onSelect" data="{{cellGroups1}}"></cell-group>
-    <cell-group bindselect="onSelect" data="{{cellGroups2}}"></cell-group>
+    <cell-group bindselect="handleSelect" data="{{cellGroups1}}"></cell-group>
+    <cell-group bindselect="handleSelect" data="{{cellGroups2}}"></cell-group>
   </view>
 </view>
 

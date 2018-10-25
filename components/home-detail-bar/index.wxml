@@ -1,6 +1,6 @@
 <view class='detail-bar'>
   <item data="{{item}}" 
-    bindselect="onTap" 
+    bindselect="handleTap" 
     wx:for="{{data}}" 
     index="{{index}}" 
     wx:key="index" 

@@ -15,7 +15,7 @@ Page({
     refreshing: false
   },
 
-  onFeedBack({detail}) {
+  handleFeedBack({detail}) {
     const { cid, contents, openid } = this.data
 
     wx.showActionSheet({
@@ -93,7 +93,7 @@ Page({
     navigator.openArticleDetailPage({iid, algs})
   },
 
-  onSwiperChange({ detail}) {
+  handleSwiperChange({ detail}) {
     const { current } = detail
     const { columns } = this.data
     const cid = columns[current].id
@@ -111,7 +111,7 @@ Page({
     }
   },
 
-  onNavigatorChange({detail}) {
+  handleNavigatorChange({detail}) {
     const { data, index } = detail
     this.setData({
       cid: data.id,

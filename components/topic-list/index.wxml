@@ -2,9 +2,9 @@
 <view class='topic-list'>
   <panel title="热点话题推荐" bold />
   <toptic-list-item 
-    bindtoptic="onTapToptic" 
-    bindfollow="onTapFollow" 
-    bindselect="onTapSelect" 
+    bindtoptic="handleTapToptic" 
+    bindfollow="handleTapFollow" 
+    bindselect="handleTapSelect" 
     wx:for="{{data}}" 
     index="{{index}}" 
     data="{{item}}" 

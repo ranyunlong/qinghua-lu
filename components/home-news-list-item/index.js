@@ -6,7 +6,7 @@ Component({
   properties: {
     data: Object,
     index: Number,
-    feedback: Boolean
+    showMenu: Boolean
   },
 
   /**
@@ -20,11 +20,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    ontap(e) {
+    handleTap(e) {
       this.triggerEvent('select', { ...e.detail, data: this.properties.data })
     },
-    onFeedBack(e) {
-      this.triggerEvent('feedback', { ...e.detail, ...this.properties })
+    handleOpenMenu(e) {
+      this.triggerEvent('openmenu', { ...e.detail, ...this.properties })
     } 
   }
 })

@@ -20,7 +20,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTap() {
+    handleTap() {
       this.triggerEvent('select', {index: this.properties.index, item: this.properties.item})
     }
   }

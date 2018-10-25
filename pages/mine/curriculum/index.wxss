@@ -45,3 +45,23 @@
   font-size: 28rpx;
   color: #666;
 }
+
+
+.none {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 750rpx;
+}
+
+.none image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.none text {
+  padding: 40rpx;
+  font-size: 36rpx;
+  color: #666;
+}

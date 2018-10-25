@@ -18,7 +18,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTap({detail}) {
+    handleTap({detail}) {
       this.triggerEvent('select', detail)
     }
   }

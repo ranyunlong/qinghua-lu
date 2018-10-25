@@ -53,7 +53,6 @@ Page({
     // 登录后台
     apis.profluLogin().then(({uid}) => {
       const { nickName, avatarUrl, gender, city, province } = detail.userInfo
-
       // 更新用户信息
       apis.profluUpdateWxUserInfo({
         user_name: nickName,
@@ -70,11 +69,19 @@ Page({
           data: detail.userInfo,
         })
 
-        // Update view
-        this.setData({
-          userInfo: detail.userInfo,
-          uid
-        })
+        if(uid) {
+          // Update view
+          this.setData({
+            userInfo: detail.userInfo,
+            uid
+          })
+        } else {
+          // Update view
+          this.setData({
+            userInfo: detail.userInfo
+          })
+        }
+        
       }) 
       .catch(e => {
         wx.showToast({
@@ -92,7 +99,7 @@ Page({
     })
   },
   
-  onSelect({detail}) {
+  handleSelect({detail}) {
     const { title, auth } = detail.item
     if (this.data.userInfo) {
       switch(title) {

@@ -3,6 +3,6 @@
   <image src='{{icon}}'></image>
   <text class='title'>#{{topic_name}}#</text>
   <text class='id'>ID:{{topic_id}}</text>
-  <button size="mini" bindtap='onTapFollow'>{{collected ? '+关注' : '已关注'}}</button>
+  <button size="mini" bindtap='handleTapFollow'>{{collected ? '+关注' : '已关注'}}</button>
 </view>
 <topic-news-list bindselect="openDetailPage" data="{{topicList}}" />

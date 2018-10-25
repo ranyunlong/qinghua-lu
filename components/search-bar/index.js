@@ -23,16 +23,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onInput(e){
+    handleInput(e){
       this.triggerEvent('input', { value: e.detail.value })
     },
-    onClear() {
+    handleClear() {
       this.triggerEvent('clear', {})
     },
-    onTap() {
+    handleTap() {
       this.triggerEvent('ok', {})
     },
-    onConfirm(e) {
+    handleConfirm(e) {
       this.triggerEvent('confirm', { value: e.detail.value })
     }
   }

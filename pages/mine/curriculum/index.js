@@ -6,7 +6,8 @@ Page({
    */
   data: {
     value: 30,
-    curriculums: [1,2,3,4,5,7,8,9,10,11,12]
+    curriculums: [1],
+    loading: false
   },
 
   /**

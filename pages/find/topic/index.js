@@ -18,12 +18,15 @@ Page({
   },
 
 
-  // 关注取消关注
-  onTapFollow() {
+  /**
+   * Handle follow & unfollow
+   */
+  handleTapFollow() {
     if (!apis.checkLogin()) return;
-    const { openid, topic_id, collected } = this.data
+    const { topic_id, collected } = this.data
     const type = collected === 0 ? 1 : 0
-    apis.followTopic(openid, topic_id, type)
+    const uid = wx.getStorageSync('uid')
+    apis.followTopic(uid, topic_id, type)
       .then(res => {
         wx.showToast({
           title: type ? '取消关注成功' : '已关注'
@@ -33,7 +36,9 @@ Page({
       .catch(e => log(e))
   },
   
-  // 打开详情页
+  /**
+   * Open to article detail page
+   */
   openDetailPage(e) {
     const { iid, algs } = e.detail.data
     navigator.openArticleDetailPage({ iid, algs})

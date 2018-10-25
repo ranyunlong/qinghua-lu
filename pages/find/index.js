@@ -9,8 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uid: null,
-    topics: []
+    uid: null,    // This User id
+    topics: [],   // Topic list
+    loading: false// On reach bottom, page list loading state
   },
 
   first: false,
@@ -23,14 +24,18 @@ Page({
     })
   },
 
-  // 打开文章详情页面
+  /**
+   * Open to article page
+   */
   openDetailPage(e) {
     const { mid } = e.detail.data
     navigator.openArticleDetailPage({ iid:mid })
   }, 
 
-  // 关注/取消关注
-  onTapFollow({detail}) {
+  /**
+   * Handle follow & unfollow
+   */
+  handleTapFollow({detail}) {
     if (!apis.checkLogin()) return;
     const { uid } = this.data 
     const { topic_id, collected } = detail.data
@@ -58,6 +63,7 @@ Page({
     })
     // From stroage get uid
     const uid = wx.getStorageSync('uid')
+    this.setData({uid})
     this.getTopics(uid)
   },
 
@@ -69,7 +75,11 @@ Page({
         topics: res
       })
       wx.hideLoading()
-    }).catch(e => log(e))
+    }).catch(e => {
+      this.setData({
+        topics: []
+      })
+    })
   },
 
   /**
@@ -83,7 +93,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 防止首次加载多次
+    // Prevent reload
     if (this.first) {
       const { uid } = this.data
       this.getTopics(uid)
@@ -117,7 +127,20 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getTopics(this.data.uid)
+    const { topics, uid } = this.data
+    this.setData({ loading: true})
+    apis.appendTopic(uid).then(res => {
+      this.setData({
+        uid,
+        topics: [...topics, ...res]
+      })
+      this.setData({ loading: false })
+    }).catch(e => {
+      this.setData({ loading: false })
+      wx.showToast({
+        title: '没有了'
+      })
+    })
   },
 
   /**

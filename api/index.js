@@ -297,14 +297,34 @@ function articleSearch(openid, keyword, st = 1) {
  * @param { String } openid
  * @param { Number } page_size default 10
  */
-function getTopic(openid, page_size=10) {
+function getTopic(uid, page_size=10) {
   return new Promise((resolve, reject) => {
     const url = `${botbrainHost}/meta/v1/RVCQS9UR56/topic/hots`;
+    const openid = wx.getStorageSync('openid')
     baseRequest(url, {
-      uid: openid,
+      uid: uid || openid,
       page_size
     }).then(res => resolve(res.data.data))
     .catch(e => reject(e))
+  })
+}
+
+/**
+ * @api getTopic
+ * @author <>
+ * 获取热点话题
+ * @param { String } openid
+ * @param { Number } page_size default 10
+ */
+function appendTopic(uid, page_size = 10) {
+  return new Promise((resolve, reject) => {
+    const url = `${botbrainHost}/meta/v1/8VA4S7UVAR/topic/hots`;
+    const openid = wx.getStorageSync('openid')
+    baseRequest(url, {
+      uid: uid || openid,
+      page_size
+    }).then(res => resolve(res.data.data))
+      .catch(e => reject(e))
   })
 }
 
@@ -317,8 +337,9 @@ function getTopic(openid, page_size=10) {
  */
 function getArticleCollect(uid) {
   const url = `${botbrainHost}/rec/v1/RVCQS9UR56/collect`
+  const openid = wx.getStorageSync('openid')
   return new Promise((resolve, reject) => {
-    baseRequest(url, {uid})
+    baseRequest(url, {uid: uid || openid})
     .then(res => resolve(res.data.data.items))
     .catch(e => reject(e))
   })
@@ -337,10 +358,11 @@ function getArticleCollect(uid) {
  */
 function ArticleCollect(uid, iid, type=0, plt = 'wechat', dt = Date.parse(new Date()) / 1000) {
   const url = `${botHost}/behavior/v1/RVCQS9UR56/collect`
+  const openid = wx.getStorageSync('openid')
   return new Promise((resolve, reject) => {
     baseRequest(url, {
-      uid,
-      guid: uid,
+      uid: uid || openid,
+      guid: openid,
       dt,
       iid,
       plt,
@@ -393,7 +415,7 @@ function followTopic(uid, topic_id, type = 0, plt = 'wechat', dt = Date.parse(ne
   return new Promise((resolve, reject) => {
     const openid = wx.getStorageSync('openid')
     baseRequest(url, {
-      uid,
+      uid: uid || openid,
       guid: openid,
       dt,
       topic_id,
@@ -434,8 +456,9 @@ function getTopics(uid, topic_id) {
   const url = `${botbrainHost}/rec/v1/RVCQS9UR56/topic`
   const guid = wx.getStorageSync('openid')
   return new Promise((reslove, reject) => {
-    baseRequest(url, { uid, guid, topic_id })
+    baseRequest(url, { uid: uid || guid, guid, topic_id })
       .then(res => reslove(res.data.data.items))
+      // .then(res => console.log(res))
       .catch(e => reject(e))
   })
 }
@@ -530,6 +553,7 @@ module.exports = {
   profluUpdateWxUserInfo,
   queryPlanInfo,
   getTopic,
+  appendTopic,
   getArticleCollect,
   ArticleCollect,
   ArticleUp,

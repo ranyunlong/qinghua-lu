@@ -1,37 +1,37 @@
 <!--components/home-news-list/index.wxml-->
 <scroll-view 
-  bindscrolltolower="onScrollToLower"
+  bindscrolltolower="handleScrollToLower"
+  bindscroll="{{handleScroll}}"
+  bindscrolltoupper="handleScrollToUpper"
   enable-back-to-top="{{enableBackToTop}}"
   scroll-with-animation="{{scrollWithAnimation}}"
   scroll-into-view="{{scrollIntoView}}"
   scroll-top="{{scrollTop}}"
   scroll-left="{{scrollLeft}}"
-  bindscroll="{{onScroll}}"
-  bindscrolltoupper="onScrollToUpper"
   upper-threshold="{{upperThreshold}}"
   lower-threshold="{{lowerThreshold}}"
   wx:if="{{scrollY || scrollX}}" 
   scroll-y="{{scrollY}}" 
   scroll-x="{{scrollX}}">
   <home-news-list-item 
-    bindselect="select"
-    bindfeedback="onFeedBack"
+    bindselect="handleSelect"
+    bindopenmenu="handleOpenMenu"
     wx:for="{{data}}" 
     data="{{item}}"
     index="{{index}}"
-    feedback="{{feedback}}"
+    show-menu="{{showMenu}}"
     wx:key="item.iid" />
   <list-loading-bar show="{{loading}}" />
 </scroll-view>
 
 <view class='item' wx:else>
   <home-news-list-item 
-    bindselect="select"
-    bindfeedback="onFeedBack"
+    bindselect="handleSelect"
+    bindopenmenu="handleOpenMenu"
     wx:for="{{data}}" 
     data="{{item}}"
     index="{{index}}"
-    feedback="{{feedback}}"
+    show-menu="{{showMenu}}"
     wx:key="item.iid" />
 <list-loading-bar show="{{loading}}" />
 </view>
