@@ -39,3 +39,7 @@ The project `Tsinghua University 陆向谦实验室` mini program.
 
 - Author  RanYunlong<ranyunlong@bjlemon.com>
 - Company bjlemon
+
+### Issues
+
+- [create issuse](https://github.com/ranyunlong/qinghua-lu/issues)
