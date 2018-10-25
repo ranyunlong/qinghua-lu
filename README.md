@@ -37,7 +37,7 @@ The project `Tsinghua University 陆向谦实验室` mini program.
 ```
 ### Contact
 
-- Author  RanYunlong<ranyunlong@bjlemon.com>
+- Author  RanYunlong`<ranyunlong@bjlemon.com>`
 - Company bjlemon
 
 ### Issues
