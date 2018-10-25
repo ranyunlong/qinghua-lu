@@ -43,4 +43,4 @@ MiniProgram
 
 ### Issues
 
-- [create issuse](https://github.com/ranyunlong/qinghua-lu/issues)
+- [create an issue](https://github.com/ranyunlong/qinghua-lu/issues)
