@@ -3,7 +3,7 @@
 The project `Tsinghua University 陆向谦实验室` mini program.
 
 ### MiniProgram directory 
-
+```
 ├─ apis                         miniprogram apis
 |  ├─baidu.js                   for baidu sdk apis
 |  ├─index.js                   project apis
@@ -34,8 +34,8 @@ The project `Tsinghua University 陆向谦实验室` mini program.
 ├─ app.json                     miniprogram global configure
 ├─ app.wxss                     miniprogram global stylesheet
 └─ project.config.json          miniprogram project configure
-
+```
 ### Contact
 
-- Author Leo
+- Author  RanYunlong<ranyunlong@bjlemon.com>
 - Company bjlemon
