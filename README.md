@@ -4,6 +4,7 @@ The project `Tsinghua University 陆向谦实验室` mini program.
 
 ### MiniProgram directory 
 ```
+MiniProgram
 ├─ apis                         miniprogram apis
 |  ├─baidu.js                   for baidu sdk apis
 |  ├─index.js                   project apis
