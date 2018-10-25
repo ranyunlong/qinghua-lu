@@ -8,8 +8,7 @@ MiniProgram
 ├─ apis                         miniprogram apis
 |  ├─baidu.js                   for baidu sdk apis
 |  ├─index.js                   project apis
-|  ├─navigator.js               navigator apis
-|  └─dev.js   
+|  └─navigator.js               navigator apis
 ├─ assets/icons                 assets
 ├─ components                   miniprogram components
 |  ├─button                     component button
